@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Character</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Responsive Navbar CSS */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header ul {
+                display: none;
+                flex-direction: column;
+                background-color: rgba(0, 0, 0, 0.8);
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .header ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ANIME</div>
+
+            <!-- ✅ Toggle button for responsive menu -->
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul data-aos="fade-down" data-aos-duration="1000">
+                <li>Home</li>
+                <li>News</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+
+        <div class="banner" style="background: url('assets/alder/Luffy icon _ Manga anime one piece, Luffy, One piece photos.jpg');">
+            <div class="glass-wrapper"></div>
+        </div>
+
+        <div class="hero-title">
+            <p data-aos="fade-left" data-aos-duration="1100">Anime</p>
+            <p data-aos="fade-left" data-aos-duration="400" class="country">Main Character</p>
+            <div data-aos="fade-left" data-aos-duration="300" class="details">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam modi ipsa, 
+                totam id molestiae natus sint, tempore perferendis voluptates cum ab ad doloremque nulla! Maiores doloribus animi dolor iste alias.
+            </div>
+            <div class="explore">
+                <button>Explore</button>
+            </div>
+        </div>
+
+        <div class="tourlist-list">
+            <ul class="place-list">
+                <li data-img="./assets/alder/Luffy\ icon\ _\ Manga\ anime\ one\ piece\,\ Luffy\,\ One\ piece\ photos.jpg">
+                    <div class="thumbnall" style="background: url('./assets/alder/Luffy\ icon\ _\ Manga\ anime\ one\ piece\,\ Luffy\,\ One\ piece\ photos.jpg');">
+                        <div class="details">
+                            <p class="province">One piece</p>
+                            <p class="place-name">Luffy</p>
+                        </div>
+                    </div>
+                </li>
+                <li data-img="./assets/ian/★𝗗𝗔𝗕𝗜.jpg">
+                    <div class="thumbnall" style="background: url('./assets/ian/★𝗗𝗔𝗕𝗜.jpg');">
+                        <div class="details">
+                            <p class="province">Hero academy</p>
+                            <p class="place-name">Devi</p>
+                        </div>
+                    </div>
+                </li>
+                <li data-img="./assets/jervin/Sung Jin-Woo.jpg">
+                    <div class="thumbnall" style="background: url('./assets/jervin/Sung Jin-Woo.jpg');">
+                        <div class="details">
+                            <p class="province">Solo levelling</p>
+                            <p class="place-name">Sung jin woo</p>
+                        </div>
+                    </div>
+                </li>
+                <li data-img="./assets/ronald/fffebd62-456b-4e1a-a906-f979d1b6a834.jpg">
+                    <div class="thumbnall" style="background: url('./assets/ronald/fffebd62-456b-4e1a-a906-f979d1b6a834.jpg');">
+                        <div class="details">
+                            <p class="province">jujutsu kaisen</p>
+                            <p class="place-name">Goju satoru</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Navbar Toggle Script
+        const toggle = document.querySelector(".menu-toggle");
+        const menu = document.querySelector(".header ul");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("show");
+        });
+
+        // Banner image hover change script
+        let places = document.querySelectorAll(".place-list li");
+        let active = "/assets/alder/Luffy icon _ Manga anime one piece, Luffy, One piece photos.jpg";
+
+        places.forEach((e) => {
+            e.addEventListener("mouseenter", (event) => {
+                places.forEach((e) => {
+                    e.classList.remove("active");
+                });
+
+                event.target.classList.add("active");
+                active = event.target.getAttribute("data-img");
+                let banner = document.querySelector(".banner");
+                banner.style.backgroundImage = `url('${active}')`;
+            });
+        });
+    </script>
+</body>
+</html>
